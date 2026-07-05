@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Work Timer</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <label for="workTime">作業時間（分）</label>
+    <input type="number" id="workTime" value="1" min="1">
+
+    <label for="breakTime">休憩時間（分）</label>
+    <input type="number" id="breakTime" value="5" min="1">
+
+    <label for="repeatCount">繰り返し回数</label>
+    <input type="number" id="repeatCount" value="4" min="1">
+
+   <label for="workSound">作業音</label>
+
+<select id="workSound">
+
+    <option value="rain.mp3">雨</option>
+
+    <option value="windybird.mp3">風</option>
+
+    <option value="fire1.mp3">焚き火</option>
+
+</select>
+
+    <hr>
+
+    <h2 id="timerDisplay">1:00</h2>
+
+    <p id="status">現在：待機中</p>
+
+    <p id="message"></p>
+
+    <button id="startButton">開始</button>
+
+    <button id="pauseButton">一時停止</button>
+
+    <button id="stopButton">終了</button>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
