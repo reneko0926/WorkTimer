@@ -29,6 +29,20 @@ const bellSound = new Audio("sounds/bell.mp3");
 let workSound = null;
 
 // ===============================
+// 画像
+// ===============================
+const workImages = [
+
+    "images/work1.png",
+    "images/work2.png",
+    "images/work3.png",
+
+];
+
+let imageIndex = 0;
+let animationTimer = null;
+
+// ===============================
 // 状態定義
 // ===============================
 const STATE = {
@@ -150,6 +164,7 @@ function startWork(){
         Number(workTimeInput.value) * 60;
 
     showMessage("作業開始！");
+    startAnimation();
     
 }
 
@@ -180,6 +195,7 @@ function finishTimer(){
 
 }
     clearInterval(timer);
+    
 
     currentState = STATE.FINISHED;
 
@@ -211,6 +227,7 @@ function updateDisplay() {
 
         case STATE.READY:
             status.textContent = "現在：待機中";
+            stopAnimation();
             break;
 
         case STATE.WORK:
@@ -223,12 +240,42 @@ function updateDisplay() {
 
         case STATE.PAUSED:
             status.textContent = "現在：一時停止中";
+            stopAnimation();
             break;
 
         case STATE.FINISHED:
             status.textContent = "終了";
+            stopAnimation();
             break;
     }
+
+}
+
+function startAnimation(){
+
+    clearInterval(animationTimer);
+
+    animationTimer = setInterval(nextImage,1000);
+
+}
+
+function nextImage(){
+
+    imageIndex++;
+
+    if(imageIndex >= workImages.length){
+
+        imageIndex = 0;
+
+    }
+
+    stateImage.src = workImages[imageIndex];
+
+}
+
+function stopAnimation(){
+
+    clearInterval(animationTimer);
 
 }
 
